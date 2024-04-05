@@ -1,0 +1,16 @@
+---
+- name: Update apt repo-cache on debian/ubuntu hosts
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+  when:
+    - ansible_pkg_mgr == "apt"
+
+- name: Install journald log server Packages
+  become: true
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - systemd-journal-remote

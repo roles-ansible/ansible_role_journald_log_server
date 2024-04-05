@@ -3,3 +3,11 @@
   ansible.builtin.include_tasks:
     file: 'versioncheck.yml'
   when: submodules_versioncheck | bool
+
+- name: Install requirements
+  ansible.builtin.include_tasks:
+    file: 'packages.yml'
+
+- name: Start Systemd Services
+  ansible.builtin.include_tasks:
+    file: 'systemd.yml'
