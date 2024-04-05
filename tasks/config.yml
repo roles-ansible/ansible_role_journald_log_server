@@ -1,0 +1,10 @@
+---
+- name: Configure systemd journal remote tls and server settings
+  become: true
+  ansible.builtin.template:
+    src: 'templates/journal-remote.conf.j2'
+    backup: true
+    dest: '/etc/systemd/journal-remote.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'

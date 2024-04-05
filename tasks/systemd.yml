@@ -1,0 +1,7 @@
+---
+- name: Enable and start  systemd-journal-remote.socket
+  become: true
+  ansible.builtin.systemd:
+    name: systemd-journal-remote.socket
+    enabled: true
+    state: 'started'

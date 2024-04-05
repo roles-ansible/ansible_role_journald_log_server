@@ -1,0 +1,13 @@
+{{ ansible_managed | comment }}
+#  This file is part of systemd.
+#
+# See journal-remote.conf(5) for details.
+
+[Remote]
+Seal=false
+SplitMode=host
+ServerKeyFile=/etc/ssl/certs/wingcon.com.key
+ServerCertificateFile=/etc/ssl/certs/wingcon.com.crt
+# ServerKeyFile=/etc/ssl/private/journal-remote.pem
+# ServerCertificateFile=/etc/ssl/certs/journal-remote.pem
+# TrustedCertificateFile=/etc/ssl/ca/trusted.pem
