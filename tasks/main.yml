@@ -8,6 +8,10 @@
   ansible.builtin.include_tasks:
     file: 'packages.yml'
 
+- name: Install requirements
+  ansible.builtin.include_tasks:
+    file: 'dir.yml'
+
 - name: Start Systemd journal remote Services
   ansible.builtin.include_tasks:
     file: 'systemd.yml'

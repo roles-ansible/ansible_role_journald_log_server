@@ -1,0 +1,9 @@
+---
+- name: Create /var/log/journal/remote
+  become: true
+  ansible.builtin.file:
+    path: '/var/log/journal/remote'
+    state: directory
+    mode: '0755'
+    owner: 'systemd-journal-remote'
+    group: 'systemd-journal-remote'
