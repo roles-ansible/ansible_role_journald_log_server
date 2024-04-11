@@ -6,4 +6,4 @@
     name: "{{ item.systemd_file }}"
     state: 'restarted'
   when: ansible_service_mgr == "systemd"
-  with_items: "{{ journald_server_systemd_jobs }}"
+  with_items: "{{ journald_server__systemd_jobs }}"
