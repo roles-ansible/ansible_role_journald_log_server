@@ -4,6 +4,8 @@
   ansible.builtin.file:
     path: '/var/log/journal/remote'
     state: directory
-    mode: '0755'
+    mode: "u=rwX,g=rX"
+    recurse: true
     owner: 'systemd-journal-remote'
     group: 'systemd-journal-remote'
+  notify: 'systemctl restart remotesyslogserver'

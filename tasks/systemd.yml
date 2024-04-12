@@ -5,3 +5,4 @@
     name: systemd-journal-remote.socket
     enabled: true
     state: 'started'
+  notify: 'systemctl restart remotesyslogserver'

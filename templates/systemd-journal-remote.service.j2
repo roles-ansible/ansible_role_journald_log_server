@@ -2,14 +2,13 @@
 #
 #  This file is part of systemd.
 #
-journald_server_systemd_jobs:
 [Unit]
 Description=Journal Remote Sink Service - {{ item.name }} on Port {{ item.port }}
 Documentation=man:systemd-journal-remote(8) man:journal-remote.conf(5)
 Requires=systemd-journal-remote.socket
 
 [Service]
-ExecStart={{ item.command }}
+ExecStart=/lib/systemd/systemd-journal-remote --listen-https=-3 --output={{ item.journal_file }}
 LockPersonality=yes
 LogsDirectory=journal/remote
 MemoryDenyWriteExecute=yes

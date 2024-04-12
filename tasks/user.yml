@@ -16,3 +16,4 @@
     home: '/run/systemd'
     shell: '/usr/sbin/nologin'
     system: true
+  notify: 'systemctl restart remotesyslogserver'
