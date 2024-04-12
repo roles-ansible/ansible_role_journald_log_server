@@ -1,0 +1,12 @@
+{{ ansible_managed | comment }}
+#
+#  This file is part of systemd.
+#
+[Unit]
+Description=Journal Remote Sink Socket for {{ item.name }} on Port {{ item.port }}
+
+[Socket]
+ListenStream={{ item.port }}
+
+[Install]
+WantedBy=sockets.target

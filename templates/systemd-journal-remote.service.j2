@@ -39,4 +39,4 @@ WatchdogSec=3min
 LimitNOFILE=524288
 
 [Install]
-Also=systemd-journal-remote.socket
+Also={{ item.systemd_file }}.socket

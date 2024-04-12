@@ -10,12 +10,24 @@
     mode: '0644'
   notify: 'systemctl restart remotesyslogserver'
 
+- name: Create systemd socket for rsyslog server
+  become: true
+  ansible.builtin.template:
+    src: 'templates/systemd-journal-remote.socket.j2'
+    backup: true
+    dest: "/lib/systemd/system/{{ item.systemd_file }}.socket"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  with_items: "{{ journald_server__systemd_jobs }}"
+  notify: 'systemctl restart remotesyslogserver'
+
 - name: Create systemd service for rsyslog server
   become: true
   ansible.builtin.template:
     src: 'templates/systemd-journal-remote.service.j2'
     backup: true
-    dest: "/lib/systemd/system/{{ item.systemd_file }}"
+    dest: "/lib/systemd/system/{{ item.systemd_file }}.service"
     owner: 'root'
     group: 'root'
     mode: '0644'

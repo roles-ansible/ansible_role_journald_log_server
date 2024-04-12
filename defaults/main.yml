@@ -6,4 +6,4 @@ journald_server__systemd_jobs:
   - name: 'Collect systemd journal logs'
     command: "/lib/systemd/systemd-journal-remote --listen-https=19532 --output=/var/log/journal/remote/"
     port: '19532'
-    systemd_file: 'systemd-journal-remote.service'
+    systemd_file: 'systemd-journal-remote'

@@ -8,6 +8,10 @@
   ansible.builtin.include_tasks:
     file: 'packages.yml'
 
+- name: Create rsyslog remote user
+  ansible.builtin.include_tasks:
+    file: 'user.yml'
+
 - name: Install requirements
   ansible.builtin.include_tasks:
     file: 'dir.yml'
