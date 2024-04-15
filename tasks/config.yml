@@ -39,3 +39,12 @@
   ansible.builtin.systemd_service:
     daemon_reload: true
   notify: 'systemctl restart remotesyslogserver'
+
+- name: "Start systemd services for rsyslog"
+  become: true
+  ansible.builtin.systemd:
+    name: "{{ item.systemd_file }}"
+    state: 'started'
+    enabled: true
+  when: ansible_service_mgr == "systemd"
+  with_items: "{{ journald_server__systemd_jobs }}"
