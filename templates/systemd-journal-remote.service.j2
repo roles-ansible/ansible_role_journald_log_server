@@ -5,7 +5,7 @@
 [Unit]
 Description=Journal Remote Sink Service - {{ item.name }} on Port {{ item.port }}
 Documentation=man:systemd-journal-remote(8) man:journal-remote.conf(5)
-Requires=systemd-journal-remote.socket
+Requires={{ item.systemd_file }}.socket
 
 [Service]
 ExecStart=/lib/systemd/systemd-journal-remote --listen-https=-3 --output={{ item.journal_file }}
